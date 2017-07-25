@@ -1,0 +1,12 @@
+/.idea
+/dist
+/node_modules
+*.bat
+*.bak
+*.text
+*.log
+rev_version.json
+/har
+new.text
+.sass-cache
+www/
