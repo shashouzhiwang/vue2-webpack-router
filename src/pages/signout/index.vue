@@ -19,7 +19,7 @@
 </template>
 <script>
     import { mapActions } from 'vuex'
-    import { USER_SIGNOUT } from 'store/user'
+    import { USER_SIGNIN } from 'store/mutation-type'
     export default {
         methods: {
             ...mapActions([USER_SIGNOUT]),

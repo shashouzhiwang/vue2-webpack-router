@@ -18,10 +18,10 @@ var server = new WebpackDevServer(compiler, {
     }
 })
 
-server.listen(3000, (err) => {
+server.listen(8091, (err) => {
     if (err) {
         console.log(err)
         return
     }
-    console.log('http://localhost:8090' + config.publicPath)
+    console.log('http://localhost:8091' + config.publicPath)
 })
