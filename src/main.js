@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
 
 import routes from './config/routes'
 import store from './store/'
 import components from './components/' //加载公共组件
+import layer from 'vue-layer-mobile'
 
-import './css/common.css'
+
+import 'vue-layer-mobile/need/layer.css'
 import './scss/common.scss'
 
 Object.keys(components).forEach((key) => {
@@ -15,7 +16,7 @@ Object.keys(components).forEach((key) => {
 })
 
 Vue.use(VueRouter)
-Vue.use(VueResource)
+Vue.use(layer)
 
 const router = new VueRouter({
     routes

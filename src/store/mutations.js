@@ -1,6 +1,4 @@
 import * as mutationsType from './mutations-type'
-import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
 
 export default { 
 	mutations: {
@@ -12,7 +10,7 @@ export default {
             sessionStorage.removeItem('user')
             Object.keys(state).forEach(k => Vue.delete(state, k))
         },
-        http_service: (state, option){
+        http_service: (state, option) => {
 
         }
     }

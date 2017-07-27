@@ -29,6 +29,7 @@
 </template>
 <script>   
     import { mapState } from 'vuex'
+	import common from '../../service/'
 	import logo from './logo.png'
     export default {
 		data() {
@@ -37,8 +38,10 @@
 			}
 		}, 
 		methods : {
-			test: function () { 
-			    Vue.http.get('/someUrl', []).then(function(){}, function(){alert()});
+			test: function () {
+//                this.$layer.loading('加载中...')
+			    common.loadAjax(this.$store.state);
+//                alert(JSON.stringify(x));
 			  }
 			
 		},
