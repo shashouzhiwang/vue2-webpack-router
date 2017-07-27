@@ -56,6 +56,11 @@ module.exports = {
                 loader: `style-loader!css-loader!autoprefixer-loader?{ browsers: ['last 100 versions'] }!less-loader`
             },
             {
+                test: /\.scss/,
+                exclude: /^node_modules$/,
+                loader: `style-loader!css-loader!autoprefixer-loader?{ browsers: ['last 100 versions'] }!sass-loader`
+            },
+            {
                 test: /\.(png|jpg)$/,
                 exclude: /^node_modules$/,
                 loader: 'url?limit=2000&name=[name].[ext]' //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片

@@ -11,28 +11,39 @@
 	}
 </style>
 <template>
+<!-- state => state.stateDate  -->
 	<div>
 		<v-header title="首页">
 			<router-link slot="right" v-if="user.id" to="/home">{{user.name}}</router-link>
 		</v-header>
 		<div class="login-msg" v-if="!user.id">
 			<router-link to="/login">你还未登录，请先登录</router-link>
+			<img width="50" :src="logo" alt="" v-on:click="test"> <br>
 		</div>
-		<div class="msg" v-if="user.id">
-			<img width="50" :src="logo" alt=""> <br>
+		<div class="msg" v-if="user.id"> 
+			<img width="50" :src="logo" alt="" v-on:click="test"> <br>
 			哈哈，恭喜你已经入坑Vue2
 		</div>
 	</div>
+
 </template>
-<script>
+<script>   
     import { mapState } from 'vuex'
 	import logo from './logo.png'
     export default {
 		data() {
-			return {
+			return { 
 				logo
 			}
+		}, 
+		methods : {
+			test: function () { 
+			    Vue.http.get('/someUrl', []).then(function(){}, function(){alert()});
+			  }
+			
 		},
-        computed: mapState({ user: state => state.user }),
+        computed: mapState({ 
+        	user: state => state.stateData
+        })
     }
 </script>

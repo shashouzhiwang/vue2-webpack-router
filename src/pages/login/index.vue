@@ -36,7 +36,7 @@
 </template>
 <script>
     import { mapActions } from 'vuex'
-    import { USER_SIGNIN } from 'store/mutation-type'
+    import { USER_SIGNIN } from 'store/mutations-type'
 
     export default {
         data() {
@@ -49,11 +49,11 @@
 			}
 		},
 		methods: {
-            ...mapActions([USER_SIGNIN]),
+            ...mapActions(['user_sign_in']),
 			submit() {
 				this.btn = true
 				if(!this.form.id || !this.form.name) return
-				this.USER_SIGNIN(this.form)
+				this.user_sign_in(this.form)
 				this.$router.replace({ path: '/home' })
 			}
 		}
