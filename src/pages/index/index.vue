@@ -1,4 +1,4 @@
-<style lang="less" scoped>
+<style lang="sass" scoped>
 	.login-msg {
 		padding: 50px;
 		text-align: center;
@@ -11,21 +11,23 @@
 	}
 </style>
 <template>
-<!-- state => state.stateDate  -->
 	<div>
-		<v-header title="首页">
-			<router-link slot="right" v-if="user.id" to="/home">{{user.name}}</router-link>
+		<v-header title="返回">
+			<router-link slot="title"  to="/home">我是主页</router-link>
 		</v-header>
 		<div class="login-msg" v-if="!user.id">
 			<router-link to="/login">你还未登录，请先登录</router-link>
+			<span class="fc-loading fc"></span>
 			<img width="50" :src="logo" alt="" v-on:click="test"> <br>
+			<div v-on:click="test">{{login}}</div>
 		</div>
 		<div class="msg" v-if="user.id"> 
 			<img width="50" :src="logo" alt="" v-on:click="test"> <br>
 			哈哈，恭喜你已经入坑Vue2
-		</div>
-	</div>
 
+		</div>
+		<v-footer></v-footer>
+	</div>
 </template>
 <script>   
     import { mapState } from 'vuex'
@@ -34,13 +36,17 @@
     export default {
 		data() {
 			return { 
-				logo
+				logo:logo,
+				login:'999'
 			}
 		}, 
 		methods : {
 			test: function () {
 //                this.$layer.loading('加载中...')
-			    common.loadAjax(this.$store.state);
+			    common.loadAjax(this,{},(response)=>{
+			    	let data = JSON.parse(response.body)
+			    	this.login = data.login
+			    });
 //                alert(JSON.stringify(x));
 			  }
 			

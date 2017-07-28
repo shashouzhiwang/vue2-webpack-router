@@ -1,32 +1,36 @@
-// import http from './http'
-//
-// export default {
-//     http:http
-// }
-
 
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 
+import  * as config from './http-config'
+
 Vue.use(VueResource)
 
 export default {
-    loadAjax: (state, option) => {
-        console.log(state);
-        return Vue.http({
-            url:'http://localhost:8089/guest/api/lang_en.php?lang=en',
+    loadAjax: (state,option, success) => {
+        Vue.http.interceptors.push((request, next) => {
+        let loading = state.$layer.loading('加载中...')
+            next((response) => {
+                state.$layer.close(loading)
+                if(!response.ok){
+                    // alert('error');
+                }
+                return response
+            });
+        })
+        Vue.http({
+            url:config.DOMAIN,
             headers:{},
             params:option,
-            method:"POST",
-            responseType:"application/json",
-            timeout:60000,
-
-        }).then(
+            method:config.METHOD,
+            responseType:config.RESPONSETYPE,
+            timeout:config.TIMEOUT,
+        }).then( 
             response => {
                 // response.status;
                 // response.statusText;
                 // response.headers.get('Expires');
-                return response.body;
+                success(response);
             },
             error => {
                 alert(JSON.stringify(error));

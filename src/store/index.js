@@ -11,6 +11,6 @@ export default new Vuex.Store({
     modules: {
         stateData,
         mutations,
-        actions
+        actions 
     }
 })

@@ -1,4 +1,4 @@
-import * as mutationsType from './mutations-type'
+import Vue from 'vue'
 
 export default { 
 	mutations: {
@@ -9,9 +9,6 @@ export default {
         user_sign_out: (state) => {
             sessionStorage.removeItem('user')
             Object.keys(state).forEach(k => Vue.delete(state, k))
-        },
-        http_service: (state, option) => {
-
         }
     }
 }  

@@ -6,8 +6,8 @@ import store from './store/'
 import components from './components/' //加载公共组件
 import layer from 'vue-layer-mobile'
 
-
 import 'vue-layer-mobile/need/layer.css'
+import './scss/iconfont.css'
 import './scss/common.scss'
 
 Object.keys(components).forEach((key) => {
